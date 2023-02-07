@@ -4,16 +4,16 @@ public class Part
 {
     public int Id { get; set; }
     public int CarId { get; set; }
-    public int ParentId { get; set; }
-    public int LevelId { get; set; }
-    public int ManufacturerId { get; set; }
-    public int TypeId { get; set; }
+    public int ParentPartId { get; set; }
+    public int PartLevelId { get; set; }
+    public int PartManufacturerId { get; set; }
+    public int PartTypeId { get; set; }
     public int SupplierId { get; set; }
-    public string Name { get; set; } = null!;
+    public string C_Name { get; set; } = null!;
     public double Weight { get; set; }
-    public string Condition { get; set; } = null!;
+    public string C_Condition { get; set; } = null!;
     public int MileageDonorVehicle { get; set; }
-    public string Details { get; set; } = String.Empty;
+    public string C_Details { get; set; } = String.Empty;
     public Car Car { get; set; }
     public Part ParentPart { get; set; }
     public PartLevel PartLevel { get; set; }

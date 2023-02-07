@@ -15,6 +15,7 @@ public class DataContext : DbContext
     
     public DataContext()
     {
+        //Database.EnsureDeleted();
         Database.EnsureCreated();
     }
 
