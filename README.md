@@ -1,5 +1,3 @@
-# SuppliersWebApi
--- Car Manufacturers
 -- Car Manufacturers
 ;WITH RECURSIVE t(n) AS ( VALUES (1) UNION ALL SELECT n+1 FROM t WHERE n < 1000 ) INSERT INTO public."CarManufacturers" ("C_Name") SELECT 'Производитель машин ' || n FROM t;
 
@@ -40,7 +38,7 @@
 		 "C_Details")
 	SELECT 
 		random() * 999 + 1,	
-		random() * 10 + 1, -- Заменить
+		1,
 		random() * 999 + 1,
 		random() * 999 + 1,
 		random() * 999 + 1,
@@ -51,5 +49,4 @@
 		random() * 500000 + 1,
 		gen_random_uuid()
 	FROM t;
-
-select * from public."Parts"
+	
