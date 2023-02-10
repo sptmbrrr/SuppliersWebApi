@@ -12,7 +12,8 @@ public abstract class RepositoryBase<T> : IRepositoryBase<T> where T : class
     }
     public void Delete(T entity)
     {
-        throw new NotImplementedException();
+        this.DataContext.Set<T>()
+                        .Remove(entity);
     }
 
     public IQueryable<T> FindAll()
@@ -20,18 +21,21 @@ public abstract class RepositoryBase<T> : IRepositoryBase<T> where T : class
         return this.DataContext.Set<T>().AsNoTracking();
     }
 
-    public void Insert(T entity)
+    public void Create(T entity)
     {
-        throw new NotImplementedException();
+        this.DataContext.Set<T>().Add(entity);
     }
 
     public void Update(T entity)
     {
-        throw new NotImplementedException();
+        this.DataContext.Set<T>()
+                        .Update(entity);
     }
 
     public IQueryable<T> FindById(Expression<Func<T, bool>> expression)
     {
-        throw new NotImplementedException();
+        return this.DataContext.Set<T>()
+                          .Where(expression)
+                          .AsNoTracking();
     }
 }
