@@ -7,5 +7,5 @@ public class Car
     public DateTime YearOfManufacture { get; set; } = DateTime.Now;
     public string C_Model { get; set; } = null!;
     public string? C_Details { get; set; } = null;
-    public CarManufacturer CarManufacturer { get; set; }
+    public CarManufacturer? CarManufacturer { get; set; }
 }

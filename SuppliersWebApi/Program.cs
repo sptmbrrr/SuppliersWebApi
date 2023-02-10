@@ -1,4 +1,6 @@
 
+using SuppliersWebApi.Repository;
+
 namespace SuppliersWebApi
 {
     public class Program
@@ -14,6 +16,7 @@ namespace SuppliersWebApi
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
             builder.Services.AddDbContext<DataContext>();
+            builder.Services.AddTransient<IPartRepository, PartRepository>();
 
             var app = builder.Build();
 
