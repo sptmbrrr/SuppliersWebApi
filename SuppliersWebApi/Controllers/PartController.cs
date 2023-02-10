@@ -1,22 +1,22 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SuppliersWebApi.Models;
+using SuppliersWebApi.Repository;
 
 namespace SuppliersWebApi.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("api/parts")]
 public class PartController : ControllerBase
 {
-    private readonly DataContext _context;
-    public PartController (
-        DataContext context)
+    protected readonly IPartRepository _repository;
+    public PartController(IPartRepository repository)
     {
-        _context = context;
+        _repository = repository;
     }
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Part>>> GetParts()
+    public async Task<IEnumerable<Part>> GetParts()
     {
-        return await _context.Parts.ToListAsync();
+        return await _repository.GetAllPartsAsync();
     }
 }
