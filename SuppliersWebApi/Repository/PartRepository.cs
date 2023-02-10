@@ -12,8 +12,9 @@ public class PartRepository : RepositoryBase<Part>, IPartRepository
         return await FindAll().ToListAsync();
     }
 
-    public Task<Part> GetById(int id)
+    public async Task<Part> GetPartByIdAsync(int id)
     {
-        throw new NotImplementedException();
+        return await FindById(x=>x.Id.Equals(id))
+                    .FirstOrDefaultAsync();
     }
 }

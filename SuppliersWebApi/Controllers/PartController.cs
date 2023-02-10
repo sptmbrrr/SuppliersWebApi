@@ -15,8 +15,15 @@ public class PartController : ControllerBase
         _repository = repository;
     }
     [HttpGet]
-    public async Task<IEnumerable<Part>> GetParts()
+    public async Task<IEnumerable<Part>> GetAllParts()
     {
         return await _repository.GetAllPartsAsync();
+    }
+    [HttpGet("{id}")]
+    public async Task<Part> GetPart(int id)
+    {
+        var part = await _repository.GetPartByIdAsync(id);
+        // mapper to dto (di _mapper)
+        return part;
     }
 }

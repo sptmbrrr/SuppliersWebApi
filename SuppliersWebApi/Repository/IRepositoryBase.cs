@@ -6,7 +6,7 @@ public interface IRepositoryBase<TEntity> where TEntity : class
 {
     IQueryable<TEntity> FindById(Expression<Func<TEntity,bool>> expression);
     IQueryable<TEntity> FindAll();
-    void Insert(TEntity entity);
+    void Create(TEntity entity);
     void Update(TEntity entity);
     void Delete(TEntity entity);
 
