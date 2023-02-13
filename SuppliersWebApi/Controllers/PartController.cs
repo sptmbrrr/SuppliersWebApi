@@ -3,7 +3,7 @@ using Application.UnitOfWork;
 using Application.DTOs;
 using Domain.Entity;
 
-namespace SuppliersWebApi.Controllers;
+namespace Web.Controllers;
 
 [ApiController]
 [Route("api/parts")]
@@ -14,15 +14,26 @@ public class PartController : ControllerBase
     {
         this._unitOfWork = unitOfWork;
     }
+
     [HttpGet]
     public async Task<IEnumerable<PartDTO>> GetAllParts()
     {
-        return await _unitOfWork.Parts.GetAllPartsAsync();
+        var parts = await _unitOfWork.Parts.GetAllPartsAsync();
+        var partDTOs = new List<PartDTO>();
+        
+        foreach(var part in parts)
+        {
+            partDTOs.Add(new PartDTO(part));                // fix!!!
+        }
+
+        return partDTOs;
     }
+
     [HttpGet("{id}")]
-    public async Task<Part> GetPart(int id)
+    public async Task<PartDTO> GetPart(int id)
     {
-        var part = await _unitOfWork.Parts.GetPartByIdAsync(id);
-        return part;
+        var partDTO = new PartDTO(await _unitOfWork.Parts.GetPartByIdAsync(id));
+
+        return partDTO;
     }
 }

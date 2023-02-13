@@ -3,8 +3,8 @@ using Domain.Entity;
 
 namespace Application.Repository;
 
-public interface IPartRepository : IRepositoryBase<PartDTO>
+public interface IPartRepository : IRepositoryBase<Part>
 {
-    Task<IEnumerable<PartDTO>> GetAllPartsAsync();
-    Task<PartDTO> GetPartByIdAsync(int id);
+    Task<IEnumerable<Part>> GetAllPartsAsync();
+    Task<Part> GetPartByIdAsync(int id);
 }

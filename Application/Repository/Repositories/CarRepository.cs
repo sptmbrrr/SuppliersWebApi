@@ -5,16 +5,15 @@ using Domain.Entity;
 
 namespace Application.Repository;
 
-public class PartRepository : RepositoryBase<Part>, IPartRepository
+public class CarRepository : RepositoryBase<Car>, ICarRepository
 {
-    public PartRepository(DataContext context)
+    public CarRepository(DataContext context)
         : base(context) { }
-    public async Task<IEnumerable<Part>> GetAllPartsAsync()
+    public async Task<IEnumerable<Car>> GetAllCarsAsync()
     {
         return await FindAll().ToListAsync();
     }
-
-    public async Task<Part> GetPartByIdAsync(int id)
+    public async Task<Car> GetCarByIdAsync(int id)
     {
         return await FindById(x => x.Id.Equals(id)).FirstOrDefaultAsync();
     }
