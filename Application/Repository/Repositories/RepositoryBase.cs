@@ -1,40 +1,42 @@
 using Microsoft.EntityFrameworkCore;
+using Domain.Entity;
+using Infrastructure.Persistence;
 using System.Linq.Expressions;
 
-namespace SuppliersWebApi.Repository;
+namespace Application.Repository;
 
 public abstract class RepositoryBase<T> : IRepositoryBase<T> where T : class
 {
     protected DataContext DataContext { get; set; }
     public RepositoryBase(DataContext dataContext)
     {
-        this.DataContext = dataContext;
+        DataContext = dataContext;
     }
     public void Delete(T entity)
     {
-        this.DataContext.Set<T>()
+        DataContext.Set<T>()
                         .Remove(entity);
     }
 
     public IQueryable<T> FindAll()
     {
-        return this.DataContext.Set<T>().AsNoTracking();
+        return DataContext.Set<T>().AsNoTracking();
     }
 
     public void Create(T entity)
     {
-        this.DataContext.Set<T>().Add(entity);
+        DataContext.Set<T>().Add(entity);
     }
 
     public void Update(T entity)
     {
-        this.DataContext.Set<T>()
+        DataContext.Set<T>()
                         .Update(entity);
     }
 
     public IQueryable<T> FindById(Expression<Func<T, bool>> expression)
     {
-        return this.DataContext.Set<T>()
+        return DataContext.Set<T>()
                           .Where(expression)
                           .AsNoTracking();
     }

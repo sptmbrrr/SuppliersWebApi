@@ -1,10 +1,10 @@
 using System.Linq.Expressions;
 
-namespace SuppliersWebApi.Repository;
+namespace Application.Repository;
 
 public interface IRepositoryBase<TEntity> where TEntity : class
 {
-    IQueryable<TEntity> FindById(Expression<Func<TEntity,bool>> expression);
+    IQueryable<TEntity> FindById(Expression<Func<TEntity, bool>> expression);
     IQueryable<TEntity> FindAll();
     void Create(TEntity entity);
     void Update(TEntity entity);

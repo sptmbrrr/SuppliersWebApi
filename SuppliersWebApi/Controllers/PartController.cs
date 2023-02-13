@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using SuppliersWebApi.Models;
-using SuppliersWebApi.Repository;
+using Application.UnitOfWork;
+using Application.DTOs;
+using Domain.Entity;
 
 namespace SuppliersWebApi.Controllers;
 
@@ -9,21 +9,20 @@ namespace SuppliersWebApi.Controllers;
 [Route("api/parts")]
 public class PartController : ControllerBase
 {
-    protected readonly IPartRepository _repository;
-    public PartController(IPartRepository repository)
+    protected readonly IUnitOfWork _unitOfWork;
+    public PartController(IUnitOfWork unitOfWork)
     {
-        _repository = repository;
+        this._unitOfWork = unitOfWork;
     }
     [HttpGet]
-    public async Task<IEnumerable<Part>> GetAllParts()
+    public async Task<IEnumerable<PartDTO>> GetAllParts()
     {
-        return await _repository.GetAllPartsAsync();
+        return await _unitOfWork.Parts.GetAllPartsAsync();
     }
     [HttpGet("{id}")]
     public async Task<Part> GetPart(int id)
     {
-        var part = await _repository.GetPartByIdAsync(id);
-        // mapper to dto (di _mapper)
+        var part = await _unitOfWork.Parts.GetPartByIdAsync(id);
         return part;
     }
 }

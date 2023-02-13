@@ -1,7 +1,6 @@
 using Microsoft.EntityFrameworkCore;
-using SuppliersWebApi.Models;
-
-namespace SuppliersWebApi;
+using Domain.Entity;
+namespace Infrastructure.Persistence;
 
 public class DataContext : DbContext
 {
@@ -12,7 +11,7 @@ public class DataContext : DbContext
     public DbSet<PartType> PartTypes { get; set; }
     public DbSet<Part> Parts { get; set; }
     public DbSet<Car> Cars { get; set; }
-    
+
     public DataContext()
     {
         //Database.EnsureDeleted();
@@ -21,12 +20,9 @@ public class DataContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         => optionsBuilder.UseNpgsql("Host=localhost;Username=postgres;Database=SuppliersDB;Password=admin;");
-    
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(Part).Assembly);
     }
-    
-    
-    
 }

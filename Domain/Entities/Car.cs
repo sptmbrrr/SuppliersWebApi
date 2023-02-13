@@ -1,4 +1,4 @@
-namespace SuppliersWebApi.Models;
+namespace Domain.Entity;
 
 public class Car
 {

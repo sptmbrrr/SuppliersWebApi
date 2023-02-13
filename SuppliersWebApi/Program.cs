@@ -1,5 +1,6 @@
-
-using SuppliersWebApi.Repository;
+using Application.Repository;
+using Application.UnitOfWork;
+using Infrastructure.Persistence;
 
 namespace SuppliersWebApi
 {
@@ -17,6 +18,7 @@ namespace SuppliersWebApi
             builder.Services.AddSwaggerGen();
             builder.Services.AddDbContext<DataContext>();
             builder.Services.AddTransient<IPartRepository, PartRepository>();
+            builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
 
             var app = builder.Build();
 
