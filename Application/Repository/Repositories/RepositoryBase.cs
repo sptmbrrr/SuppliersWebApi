@@ -14,8 +14,7 @@ public abstract class RepositoryBase<T> : IRepositoryBase<T> where T : class
     }
     public void Delete(T entity)
     {
-        DataContext.Set<T>()
-                        .Remove(entity);
+        DataContext.Set<T>().Remove(entity);
     }
 
     public IQueryable<T> FindAll()
@@ -30,8 +29,7 @@ public abstract class RepositoryBase<T> : IRepositoryBase<T> where T : class
 
     public void Update(T entity)
     {
-        DataContext.Set<T>()
-                        .Update(entity);
+        DataContext.Set<T>().Update(entity);
     }
 
     public IQueryable<T> FindById(Expression<Func<T, bool>> expression)

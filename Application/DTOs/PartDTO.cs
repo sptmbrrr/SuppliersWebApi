@@ -30,4 +30,10 @@ public class PartDTO
     public string C_Condition { get; set; } = null!;
     public int MileageDonorVehicle { get; set; }
     public string C_Details { get; set; } = String.Empty;
+    public Car? Car { get; set; }
+    public Part? ParentPart { get; set; }
+    public PartLevel? PartLevel { get; set; }
+    public PartManufacturer? PartManufacturer { get; set; }
+    public PartType? PartType { get; set; }
+    public Supplier? Supplier { get; set; }
 }

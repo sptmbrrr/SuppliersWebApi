@@ -18,6 +18,7 @@ namespace SuppliersWebApi
             builder.Services.AddSwaggerGen();
             builder.Services.AddDbContext<DataContext>();
             builder.Services.AddTransient<IPartRepository, PartRepository>();
+            builder.Services.AddTransient<ICarRepository, CarRepository>();
             builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
 
             var app = builder.Build();

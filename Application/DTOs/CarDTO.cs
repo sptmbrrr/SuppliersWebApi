@@ -16,4 +16,5 @@ public class CarDTO
     public DateTime YearOfManufacture { get; set; } = DateTime.Now;
     public string C_Model { get; set; } = null!;
     public string? C_Details { get; set; } = null;
+    public CarManufacturer? CarManufacturer { get; set; }
 }

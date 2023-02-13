@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebUI", "SuppliersWebApi\WebUI.csproj", "{C86BBE9B-7AE7-432A-829C-7FA0B995A5E1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web", "SuppliersWebApi\Web.csproj", "{C86BBE9B-7AE7-432A-829C-7FA0B995A5E1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{BB2E679C-47A5-445C-84C8-0B67CF71B683}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{BB2E679C-47A5-445C-84C8-0B67CF71B683}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{43441DE6-AFAF-4A4E-B8EA-A8FE0E64294B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{7C7A51B6-DE36-4BB5-8C02-DBAA51054F7A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{7C7A51B6-DE36-4BB5-8C02-DBAA51054F7A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{57CDED0A-E428-49D9-867B-AFBB2EDA2267}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\Application.csproj", "{57CDED0A-E428-49D9-867B-AFBB2EDA2267}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{9B2F01E4-9A2A-41EE-91AE-04DEED63BB6D}"
 EndProject
