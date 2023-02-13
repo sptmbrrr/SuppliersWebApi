@@ -1,7 +1,9 @@
 using Microsoft.EntityFrameworkCore;
-using SuppliersWebApi.Models;
+using Application.DTOs;
+using Infrastructure.Persistence;
+using Domain.Entity;
 
-namespace SuppliersWebApi.Repository;
+namespace Application.Repository;
 
 public class PartRepository : RepositoryBase<Part>, IPartRepository
 {
@@ -14,7 +16,7 @@ public class PartRepository : RepositoryBase<Part>, IPartRepository
 
     public async Task<Part> GetPartByIdAsync(int id)
     {
-        return await FindById(x=>x.Id.Equals(id))
+        return await FindById(x => x.Id.Equals(id))
                     .FirstOrDefaultAsync();
     }
 }
