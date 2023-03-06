@@ -15,7 +15,8 @@ public class CarController : ControllerBase
         _unitOfWork = unitOfWork;
     }
 
-    [HttpGet]
+    [HttpGet("get.{format}"), FormatFilter]
+    [Produces("application/json", "application/xml", Type = typeof(List<string>))]
     public async Task<IEnumerable<CarDTO>> GetAllCars()
     {
         var cars = await _unitOfWork.Cars.GetAllCarsAsync();
