@@ -1,7 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
-using Application.UnitOfWork;
-using Application.DTOs;
-using Domain.Entity;
+using Web.Models;
+using AutoMapper;
+using Application.Common.DTOs;
+using Application.Common.UnitOfWork;
 
 namespace Web.Controllers;
 
@@ -10,22 +11,19 @@ namespace Web.Controllers;
 public class CarController : ControllerBase
 {
     protected readonly IUnitOfWork _unitOfWork;
-    public CarController(IUnitOfWork unitOfWork)
+    protected readonly IMapper _mapper;
+    public CarController(IUnitOfWork unitOfWork, IMapper mapper)
     {
         _unitOfWork = unitOfWork;
+        _mapper = mapper;
     }
 
-    [HttpGet("get.{format}"), FormatFilter]
+    [HttpGet("{format}"), FormatFilter]
     [Produces("application/json", "application/xml", Type = typeof(List<string>))]
-    public async Task<IEnumerable<CarDTO>> GetAllCars()
+    public async Task<IEnumerable<CarDTO>> GetAllCars([FromQuery] CarParameters carParameters)
     {
-        var cars = await _unitOfWork.Cars.GetAllCarsAsync();
-        var carDTOs = new List<CarDTO>();
-        foreach (var car in cars)
-        {
-            carDTOs.Add(new CarDTO(car));               // fix!!!
-        }
+        var cars = await _unitOfWork.Cars.GetCarsAsync(carParameters);
 
-        return carDTOs;
+        return _mapper.Map<List<CarDTO>>(cars);
     }
 }

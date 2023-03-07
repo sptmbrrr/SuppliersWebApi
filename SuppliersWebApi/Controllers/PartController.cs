@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
-using Application.UnitOfWork;
-using Application.DTOs;
 using Domain.Entity;
+using Application.Common.DTOs;
+using Application.Common.UnitOfWork;
 
 namespace Web.Controllers;
 
@@ -18,7 +18,7 @@ public class PartController : ControllerBase
     [HttpGet]
     public async Task<IEnumerable<PartDTO>> GetAllParts()
     {
-        var parts = await _unitOfWork.Parts.GetAllPartsAsync();
+        var parts = await _unitOfWork.Parts.GetPartsAsync();
         var partDTOs = new List<PartDTO>();
 
         foreach (var part in parts)

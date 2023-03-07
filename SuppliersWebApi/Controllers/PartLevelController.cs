@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
-using Application.UnitOfWork;
-using Application.DTOs;
+using Application.Common.DTOs;
 using Domain.Entity;
+using Application.Common.UnitOfWork;
 
 namespace Web.Controllers;
 

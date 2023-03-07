@@ -1,6 +1,9 @@
-using Application.Repository;
-using Application.UnitOfWork;
+using Application.Common.Repository.Interfaces;
+using Application.Common.Repository.Repositories;
+using Application.Common.UnitOfWork;
+using Application.Mappings;
 using Infrastructure.Persistence;
+using System.Reflection;
 
 namespace SuppliersWebApi
 {
@@ -17,6 +20,7 @@ namespace SuppliersWebApi
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
             builder.Services.AddDbContext<DataContext>();
+            builder.Services.AddAutoMapper(typeof(MappingsProfiles));
             builder.Services.AddTransient<IPartRepository, PartRepository>();
             builder.Services.AddTransient<ICarRepository, CarRepository>();
             builder.Services.AddTransient<ICarManufacturerRepository, CarManufacturerRepository>();

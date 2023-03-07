@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
-using Application.UnitOfWork;
-using Application.DTOs;
 using Domain.Entity;
+using Application.Common.DTOs;
+using Application.Common.UnitOfWork;
 
 namespace Web.Controllers;
 
@@ -18,7 +18,7 @@ public class CarManufacturerController : ControllerBase
     [HttpGet]
     public async Task<IEnumerable<CarManufacturerDTO>> GetAllCarManufacturers()
     {
-        var carManufacturers = await _unitOfWork.CarManufacturers.GetAllCarManufacturersAsync();
+        var carManufacturers = await _unitOfWork.CarManufacturers.GetCarManufacturersAsync();
         var carManufacturerDTOs = new List<CarManufacturerDTO>();
         foreach(var carManufacturer in carManufacturers)
         {
