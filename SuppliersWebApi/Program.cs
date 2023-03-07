@@ -19,6 +19,11 @@ namespace SuppliersWebApi
             builder.Services.AddDbContext<DataContext>();
             builder.Services.AddTransient<IPartRepository, PartRepository>();
             builder.Services.AddTransient<ICarRepository, CarRepository>();
+            builder.Services.AddTransient<ICarManufacturerRepository, CarManufacturerRepository>();
+            builder.Services.AddTransient<IPartLevelRepository, PartLevelRepository>();
+            builder.Services.AddTransient<IPartManufacturerRepository, PartManufacturerRepository>();
+            builder.Services.AddTransient<IPartTypeRepository, PartTypeRepository>();
+            builder.Services.AddTransient<ISupplierRepository, SupplierRepository>();
             builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
 
             var app = builder.Build();

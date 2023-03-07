@@ -20,8 +20,8 @@ public class PartController : ControllerBase
     {
         var parts = await _unitOfWork.Parts.GetAllPartsAsync();
         var partDTOs = new List<PartDTO>();
-        
-        foreach(var part in parts)
+
+        foreach (var part in parts)
         {
             partDTOs.Add(new PartDTO(part));                // fix!!!
         }
@@ -35,5 +35,23 @@ public class PartController : ControllerBase
         var partDTO = new PartDTO(await _unitOfWork.Parts.GetPartByIdAsync(id));
 
         return partDTO;
+    }
+
+    [HttpPost]
+    public async Task CreatePart(PartDTO partDTO)
+    {
+        await _unitOfWork.Parts.CreatePartAsync(partDTO);
+    }
+
+    [HttpDelete]
+    public async Task DeletePart(int id)
+    {
+
+    }
+
+    [HttpPut]
+    public async Task UpdatePart(PartDTO partDTO, int id)
+    {
+
     }
 }
